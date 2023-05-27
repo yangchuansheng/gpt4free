@@ -14,6 +14,6 @@ RUN pip install --upgrade pip setuptools \
  && python3 -m poetry install \
  && rm ./pyproject.toml
 
-CMD ["streamlit", "run", "./gui/streamlit_app.py"]
+CMD ["poetry", "run", "streamlit", "run", "./gui/streamlit_app.py"]
 
 EXPOSE 8501
