@@ -11,8 +11,7 @@ WORKDIR /root/gpt4free
 
 RUN pip install --upgrade pip setuptools \
  && pip3 install poetry \
- && python3 -m poetry install \
- && rm ./pyproject.toml
+ && python3 -m poetry install
 
 CMD ["poetry", "run", "streamlit", "run", "./gui/streamlit_app.py"]
 
