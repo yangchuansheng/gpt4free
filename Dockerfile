@@ -3,12 +3,13 @@ FROM python:3.11
 RUN apt-get update \
  && apt-get install -y --no-install-recommends ffmpeg \
  && apt-get -y clean \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
-COPY requirements.txt /tmp
+COPY pyproject.toml ./
 RUN pip install --upgrade pip \
- && pip install -r /tmp/requirements.txt \
- && rm /tmp/requirements.txt
+ && poetry install \
+ && rm ./pyproject.toml
 
 COPY . /root/gpt4free
 
