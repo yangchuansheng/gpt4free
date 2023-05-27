@@ -7,8 +7,9 @@ RUN apt-get update \
  && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
 
 COPY pyproject.toml ./
-RUN pip install --upgrade pip \
- && poetry install \
+RUN pip install --upgrade pip setuptools \
+ && pip3 install poetry
+ && python3 -m poetry install
  && rm ./pyproject.toml
 
 COPY . /root/gpt4free
